@@ -156,7 +156,7 @@ export const Projects = () => {
 
   return (
     <section
-      className="min-h-screen  max-w-[1180px] mx-auto px-6 mt-20 pb-20 space-y-10"
+      className="  max-w-[1180px] mx-auto px-6 mt-20 pb-20 space-y-10"
       id="projects"
     >
       <div className="space-y-4 mt-10">
@@ -173,7 +173,7 @@ export const Projects = () => {
           Take a look at some of our best work, we are truly proud!
         </p>
       </div>
-      <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-0 justify-between h-full md:h-[480px] w-full bg-white rounded-4xl shadow-lg p-6 md:p-16">
+      <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-0 justify-between h-full xl:h-[480px] w-full bg-white rounded-4xl shadow-lg p-6 md:p-16">
         <div className="space-y-2" ref={infoRef}>
           <Image
             alt="Project Logo"
