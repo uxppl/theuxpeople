@@ -127,8 +127,11 @@ export const Header = () => {
       </button>
 
       <div
+        aria-expanded={mobileMenuOpen}
         className={`bg-white left-0 z-50 top-14 absolute rounded-4xl shadow w-full h-auto flex flex-col pt-2 pb-6 transition-opacity duration-300 md:hidden md:pointer-events-none ${
-          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0"
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         style={{ zIndex: 100 }}
       >
