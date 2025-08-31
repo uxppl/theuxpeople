@@ -156,7 +156,7 @@ export const Projects = () => {
 
   return (
     <section
-      className="  max-w-[1180px] mx-auto px-6 mt-20 pb-20 space-y-10"
+      className="max-w-[1180px] mx-auto px-6 mt-20 pb-20 space-y-10"
       id="projects"
     >
       <div className="space-y-4 mt-10">

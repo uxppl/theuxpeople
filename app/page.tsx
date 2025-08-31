@@ -1,4 +1,5 @@
 import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
@@ -40,13 +41,8 @@ export default function Home() {
         </span>
 
         <Contact />
-
-        <span className="border-b border-sub-border w-full h-2 absolute"></span>
-        <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between">
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
-        </span>
       </main>
+      <Footer />
     </div>
   );
 }
