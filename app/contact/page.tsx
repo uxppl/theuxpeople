@@ -110,7 +110,7 @@ const Contact = () => {
               className="block text-sm font-medium mb-2"
               htmlFor="fullName"
             >
-              Full Name*
+              Full Name <span className="text-primary">*</span>
             </label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
@@ -134,7 +134,7 @@ const Contact = () => {
           </div>
           <div className="relative">
             <label className="block text-sm font-medium mb-2" htmlFor="email">
-              Email*
+              Email <span className="text-primary">*</span>
             </label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
@@ -158,7 +158,7 @@ const Contact = () => {
           </div>
           <div className="relative">
             <label className="block text-sm font-medium mb-2" htmlFor="phone">
-              Phone Number*
+              Phone Number <span className="text-primary">*</span>
             </label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
