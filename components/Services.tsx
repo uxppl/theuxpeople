@@ -87,7 +87,7 @@ export const Services = () => {
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom top",
+        end: "bottom -50%",
         toggleActions: "play reverse play reverse",
       },
     });
@@ -100,7 +100,7 @@ export const Services = () => {
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom top",
+        end: "bottom -50%",
         toggleActions: "play reverse play reverse",
       },
     });
@@ -113,7 +113,7 @@ export const Services = () => {
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom top",
+        end: "bottom -50%",
         toggleActions: "play reverse play reverse",
       },
     });
@@ -125,7 +125,7 @@ export const Services = () => {
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom top",
+        end: "bottom -50%",
         toggleActions: "play reverse play reverse",
       },
     });
