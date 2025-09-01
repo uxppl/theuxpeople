@@ -223,7 +223,7 @@ const Contact = () => {
             ))}
           </div>
         </div>
-        <div className="flex  pt-2">
+        <div className="flex justify-between items-center  pt-2">
           <Button
             iconPosition="right"
             icon={
@@ -237,6 +237,10 @@ const Contact = () => {
           >
             Submit
           </Button>
+          <p className="text-xs text-sub-color">
+            Your information will remain confidential and only be used by
+            TheUXPeople team, ensuring your privacy.
+          </p>
         </div>
       </form>
     </div>
