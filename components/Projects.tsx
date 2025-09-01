@@ -104,7 +104,7 @@ export const Projects = () => {
         trigger: titleRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(descRef.current, {
@@ -116,7 +116,7 @@ export const Projects = () => {
         trigger: descRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(cardRef.current, {
@@ -128,7 +128,7 @@ export const Projects = () => {
         trigger: cardRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
   }, []);

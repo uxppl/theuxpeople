@@ -26,7 +26,7 @@ export const Process = () => {
         trigger: titleRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(descRef.current, {
@@ -38,7 +38,7 @@ export const Process = () => {
         trigger: descRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(contentRef.current, {
@@ -50,7 +50,7 @@ export const Process = () => {
         trigger: contentRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
   }, []);

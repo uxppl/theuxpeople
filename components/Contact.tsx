@@ -29,7 +29,7 @@ export const Contact = () => {
         trigger: titleRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(descRef.current, {
@@ -41,7 +41,7 @@ export const Contact = () => {
         trigger: descRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(buttonsRef.current, {
@@ -53,7 +53,7 @@ export const Contact = () => {
         trigger: buttonsRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(infoRef.current, {
@@ -65,7 +65,7 @@ export const Contact = () => {
         trigger: infoRef.current,
         start: "top 80%",
         end: "bottom top",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
   }, []);

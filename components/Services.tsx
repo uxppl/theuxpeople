@@ -59,36 +59,27 @@ export const Services = () => {
       y: -40,
       duration: 0.5,
       ease: "power2.out",
-      scrollTrigger: {
-        trigger: boxRef.current,
-        start: "top 100%",
-        end: "bottom top",
-        toggleActions: "play reverse play reverse",
-      },
+      delay: 1,
     });
     gsap.from(descRef.current, {
       opacity: 0,
       y: 40,
       duration: 0.5,
       ease: "power2.out",
-      scrollTrigger: {
-        trigger: boxRef.current,
-        start: "top 100%",
-        end: "bottom top",
-        toggleActions: "play reverse play reverse",
-      },
+      delay: 1.2,
     });
     gsap.from(bgRefs.current, {
       opacity: 0,
       scale: 0.7,
       duration: 0.5,
       stagger: 0.15,
+      delay: 0.15,
       ease: "power2.out",
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom -50%",
-        toggleActions: "play reverse play reverse",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(iconRefs.current, {
@@ -96,12 +87,13 @@ export const Services = () => {
       y: 20,
       duration: 0.5,
       stagger: 0.15,
+      delay: 0.3,
       ease: "power2.out",
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom -50%",
-        toggleActions: "play reverse play reverse",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(contentRefs.current, {
@@ -109,24 +101,26 @@ export const Services = () => {
       y: 30,
       duration: 0.5,
       stagger: 0.15,
+      delay: 0.45,
       ease: "power2.out",
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom -50%",
-        toggleActions: "play reverse play reverse",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
       },
     });
     gsap.from(buttonRef.current, {
       opacity: 0,
       y: 40,
       duration: 0.6,
+      delay: 0.6,
       ease: "power2.out",
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top 80%",
-        end: "bottom -50%",
-        toggleActions: "play reverse play reverse",
+        end: "bottom top",
+        toggleActions: "play none none reverse",
       },
     });
   }, [pathname]);
