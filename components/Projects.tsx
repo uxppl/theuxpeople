@@ -103,7 +103,8 @@ export const Projects = () => {
       scrollTrigger: {
         trigger: titleRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
     gsap.from(descRef.current, {
@@ -111,14 +112,26 @@ export const Projects = () => {
       y: 40,
       duration: 0.7,
       ease: "power2.out",
-      delay: 0.2,
       scrollTrigger: {
         trigger: descRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
-  }, {});
+    gsap.from(cardRef.current, {
+      opacity: 0,
+      scale: 0.98,
+      duration: 0.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: cardRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+  }, []);
 
   useGSAP(() => {
     if (cardRef.current) {

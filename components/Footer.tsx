@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 
 const whatsappUrl =
   process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/905052720895";
@@ -39,11 +42,23 @@ const footerBlocks = [
   },
 ];
 
+const ACTIVE_SERVICE_KEY = "activeService";
+
 export const Footer = () => {
+  const handleServiceClick = (service: string) => {
+    localStorage.setItem(ACTIVE_SERVICE_KEY, service);
+    window.dispatchEvent(new Event("activeServiceChange"));
+    gsap.to(window, {
+      duration: 0.8,
+      scrollTo: { y: "#services", offsetY: 0 },
+      ease: "power2.out",
+    });
+  };
+
   return (
     <footer className="max-w-[1180px] mx-auto px-6 xl:mt-20 pb-5 z-50">
       <div className="bg-white shadow-lg rounded-4xl p-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {footerBlocks.map((block, idx) => (
+        {footerBlocks.map((block) => (
           <div key={block.title} className="flex flex-col items-start gap-2">
             <div
               className={`w-6 h-6 rounded-full flex items-center justify-center mb-2 ${block.color}`}
@@ -59,19 +74,17 @@ export const Footer = () => {
               {block.title}
             </div>
             <ul className="space-y-1">
-              {Array.isArray(block.items) && block.items.length > 0
-                ? block.items.map((item, i) =>
-                    typeof item === "string" ? (
-                      <li key={item} className="text-[15px] text-gray-700">
-                        {item}
-                      </li>
-                    ) : (
-                      <li key={item} className="text-[15px] text-gray-700">
-                        {item}
-                      </li>
-                    )
-                  )
-                : null}
+              {block.items.map((item) => (
+                <li key={item}>
+                  <button
+                    type="button"
+                    className="text-[15px] text-gray-700 hover:text-primary transition-colors text-left"
+                    onClick={() => handleServiceClick(block.title)}
+                  >
+                    {item}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         ))}

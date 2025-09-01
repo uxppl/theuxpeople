@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { Button } from "./shared/Button";
 import { AtSign, MessageCircle, UsersRound } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const whatsappUrl =
   process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/905052720895";
@@ -27,7 +28,8 @@ export const Contact = () => {
       scrollTrigger: {
         trigger: titleRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
     gsap.from(descRef.current, {
@@ -35,11 +37,11 @@ export const Contact = () => {
       y: 40,
       duration: 0.7,
       ease: "power2.out",
-      delay: 0.2,
       scrollTrigger: {
         trigger: descRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
     gsap.from(buttonsRef.current, {
@@ -47,11 +49,11 @@ export const Contact = () => {
       y: 40,
       duration: 0.7,
       ease: "power2.out",
-      delay: 0.4,
       scrollTrigger: {
         trigger: buttonsRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
     gsap.from(infoRef.current, {
@@ -59,14 +61,14 @@ export const Contact = () => {
       y: 40,
       duration: 0.7,
       ease: "power2.out",
-      delay: 0.6,
       scrollTrigger: {
         trigger: infoRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
-  }, {});
+  }, []);
 
   return (
     <section
@@ -89,10 +91,22 @@ export const Contact = () => {
       </div>
       <div
         ref={buttonsRef}
-        className="flex flex-col items-center md:flex-row justify-center gap-8 pt-10"
+        className="flex items-center flex-row flex-wrap justify-center gap-8 pt-10"
       >
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-          <Button icon={<MessageCircle fill="#ffffff" />}>Send WhatsApp</Button>
+          <Button
+            icon={
+              <Image
+                src="/images/WhatsApp.png"
+                alt="icon"
+                width={20}
+                height={20}
+                priority
+              />
+            }
+          >
+            Send WhatsApp
+          </Button>
         </a>
         <Link href="/contact">
           <Button light icon={<AtSign />}>

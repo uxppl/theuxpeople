@@ -5,7 +5,9 @@ import { User, AtSign, PhoneIcon } from "lucide-react";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+gsap.registerPlugin(ScrollTrigger);
 
 const callUrl =
   process.env.NEXT_PUBLIC_CALL_URL || "https://form.typeform.com/to/GLrLzhQr";
@@ -19,40 +21,44 @@ export const Hero = () => {
   const topBarRef = useRef(null);
 
   useGSAP(() => {
-    gsap.from(topBarRef.current, {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+    tl.from(topBarRef.current, {
       opacity: 0,
       y: -40,
-      duration: 0.7,
+      duration: 0.5,
       ease: "power2.out",
-    });
-    gsap.from(titleRef.current, {
-      opacity: 0,
-      scale: 0.95,
-      duration: 0.8,
-      delay: 0.3,
-      ease: "power2.out",
-    });
-    gsap.from(descRef.current, {
-      opacity: 0,
-      y: 40,
-      duration: 0.7,
-      delay: 0.6,
-      ease: "power2.out",
-    });
-    gsap.from(btnLeftRef.current, {
-      opacity: 0,
-      x: -60,
-      duration: 0.7,
-      delay: 0.9,
-      ease: "power2.out",
-    });
-    gsap.from(btnRightRef.current, {
-      opacity: 0,
-      x: 60,
-      duration: 0.7,
-      delay: 1.1,
-      ease: "power2.out",
-    });
+    })
+      .from(titleRef.current, {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+      .from(descRef.current, {
+        opacity: 0,
+        y: 40,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+      .from(btnLeftRef.current, {
+        opacity: 0,
+        x: -60,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+      .from(btnRightRef.current, {
+        opacity: 0,
+        x: 60,
+        duration: 0.5,
+        ease: "power2.out",
+      });
   }, {});
 
   return (

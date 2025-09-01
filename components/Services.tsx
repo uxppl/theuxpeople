@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -40,6 +40,8 @@ const serviceBlocks = [
   },
 ];
 
+const ACTIVE_SERVICE_KEY = "activeService";
+
 export const Services = () => {
   const boxRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -49,6 +51,7 @@ export const Services = () => {
   const contentRefs = useRef<any[]>([]);
   const buttonRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
+  const [activeService, setActiveServiceState] = useState<string | null>(null);
 
   useGSAP(() => {
     gsap.from(titleRef.current, {
@@ -56,67 +59,98 @@ export const Services = () => {
       y: -40,
       duration: 0.5,
       ease: "power2.out",
-      delay: 1,
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 100%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
     });
     gsap.from(descRef.current, {
       opacity: 0,
       y: 40,
       duration: 0.5,
       ease: "power2.out",
-      delay: 1.2,
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 100%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
     });
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: boxRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      })
-      .from(
-        bgRefs.current,
-        {
-          opacity: 0,
-          scale: 0.7,
-          duration: 0.5,
-          stagger: 0.15,
-          ease: "power2.out",
-        },
-        "+=0.2"
-      )
-      .from(
-        iconRefs.current,
-        {
-          opacity: 0,
-          y: 20,
-          duration: 0.5,
-          stagger: 0.15,
-          ease: "power2.out",
-        },
-        "-=0.3"
-      )
-      .from(
-        contentRefs.current,
-        {
-          opacity: 0,
-          y: 30,
-          duration: 0.5,
-          stagger: 0.15,
-          ease: "power2.out",
-        },
-        "-=0.3"
-      )
-      .from(
-        buttonRef.current,
-        {
-          opacity: 0,
-          y: 40,
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        "+=0.1"
-      );
+    gsap.from(bgRefs.current, {
+      opacity: 0,
+      scale: 0.7,
+      duration: 0.5,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+    gsap.from(iconRefs.current, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+    gsap.from(contentRefs.current, {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+    gsap.from(buttonRef.current, {
+      opacity: 0,
+      y: 40,
+      duration: 0.6,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
   }, [pathname]);
+
+  useEffect(() => {
+    const onStorage = () => {
+      const stored = localStorage.getItem(ACTIVE_SERVICE_KEY);
+      if (stored) {
+        setActiveServiceState(stored);
+        setTimeout(() => {
+          setActiveServiceState(null);
+          localStorage.removeItem(ACTIVE_SERVICE_KEY);
+        }, 3000);
+      }
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("activeServiceChange", onStorage);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener("activeServiceChange", onStorage);
+    };
+  }, []);
 
   return (
     <section
@@ -168,7 +202,9 @@ export const Services = () => {
               ref={(el) => {
                 contentRefs.current[idx] = el;
               }}
-              className="text-foreground text-[24px] font-medium mb-3 text-center"
+              className={`text-foreground text-[24px] font-medium mb-3 text-center transition-colors duration-200 ${
+                activeService === block.title ? "text-primary " : ""
+              }`}
             >
               {block.title}
               <ul className="space-y-2 mt-2">

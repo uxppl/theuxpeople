@@ -25,7 +25,8 @@ export const Process = () => {
       scrollTrigger: {
         trigger: titleRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
     gsap.from(descRef.current, {
@@ -33,14 +34,26 @@ export const Process = () => {
       y: 40,
       duration: 0.7,
       ease: "power2.out",
-      delay: 0.2,
       scrollTrigger: {
         trigger: descRef.current,
         start: "top 80%",
-        once: true,
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
       },
     });
-  }, {});
+    gsap.from(contentRef.current, {
+      opacity: 0,
+      y: 60,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: contentRef.current,
+        start: "top 80%",
+        end: "bottom top",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+  }, []);
 
   const steps = [
     { name: "Discover", image: "/images/discover-icon.png" },

@@ -81,7 +81,7 @@ export const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`flex items-center justify-between fixed left-1/2 -translate-1/2 mx-auto pl-6 pr-0.5 bg-white border border-[#f7f7f7] h-12 max-w-[807px] w-full rounded-full transition-all duration-400 z-50`}
+      className={`flex items-center justify-between fixed left-1/2 -translate-1/2 mx-auto pl-6 pr-0.5 bg-white border border-[#f7f7f7] h-12 max-w-[95vw] lg:max-w-[807px] w-full rounded-full transition-all duration-400 z-50`}
       style={{
         top: isPinned ? 40 : 80,
         boxShadow: `0px 1px 3px -1.5px #33333316,
@@ -131,7 +131,7 @@ export const Header = () => {
 
       <div
         aria-expanded={mobileMenuOpen}
-        className={`bg-white left-0 z-50 top-14 absolute rounded-4xl shadow w-full h-auto flex flex-col pt-2 pb-6 transition-opacity duration-300 md:hidden md:pointer-events-none ${
+        className={`bg-white left-0 right-0 z-50 top-14 absolute rounded-4xl shadow max-w-[95vw] md:max-w-full mx-auto h-auto flex flex-col pt-2 pb-6 transition-opacity duration-300 md:hidden md:pointer-events-none ${
           mobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -152,7 +152,7 @@ export const Header = () => {
             {section.label}
           </button>
         ))}
-        <div className="w-fit mt-4">
+        <div className="w-fit self-center mt-4">
           <Button icon={<AtSign />}>Contact Us</Button>
         </div>
       </div>
