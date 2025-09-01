@@ -53,7 +53,7 @@ export const Process = () => {
 
   useGSAP(() => {
     if (contentRef.current) {
-      const direction = activeStep > prevStepRef.current ? -60 : 60;
+      const direction = activeStep > prevStepRef.current ? 60 : -60;
       gsap.fromTo(
         contentRef.current,
         { opacity: 0, x: direction },

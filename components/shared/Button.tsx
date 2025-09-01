@@ -21,7 +21,7 @@ export const Button = ({
   return (
     <div className={`w-fit ${borderClass}`}>
       <button
-        className={`${buttonClass} text-nowrap w-full h-10 text-sm font-medium rounded-full flex items-center justify-center gap-2 px-4 ${
+        className={`${buttonClass} text-nowrap w-full h-10 text-sm font-medium rounded-full flex items-center transition-all duration-300 ease-in-out hover:scale-105  justify-center gap-2 px-4 ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
         onClick={onClick}
