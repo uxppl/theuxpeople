@@ -6,43 +6,40 @@ import { Process } from "@/components/Process";
 import { Projects } from "@/components/Projects";
 import { Services } from "@/components/Services";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="font-sans pt-12 pb-6 relative overflow-hidden">
-      <div className="border-l border-r border-sub-border max-w-[1280px] w-full h-full top-0 left-1/2 -translate-x-1/2  absolute"></div>
-      <Header />
-      <main>
-        <Hero />
-        <span className="border-b border-sub-border w-full h-2 absolute"></span>
-        <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between">
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
-        </span>
+    <main>
+      <Hero />
+      <span className="border-b border-sub-border w-full h-2 absolute pointer-events-none"></span>
+      <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between pointer-events-none">
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
+      </span>
 
-        <Services />
-        <span className="border-b border-sub-border w-full h-2 absolute"></span>
-        <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between">
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
-        </span>
+      <Services />
+      <span className="border-b border-sub-border w-full h-2 absolute pointer-events-none"></span>
+      <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between pointer-events-none">
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
+      </span>
 
-        <Projects />
-        <span className="border-b border-sub-border w-full h-2 absolute"></span>
-        <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between">
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
-        </span>
+      <Projects />
+      <span className="border-b border-sub-border w-full h-2 absolute"></span>
+      <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between pointer-events-none">
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
+      </span>
 
-        <Process />
-        <span className="border-b border-sub-border w-full h-2 absolute"></span>
-        <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between">
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
-          <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
-        </span>
+      <Process />
+      <span className="border-b border-sub-border w-full h-2 absolute"></span>
+      <span className="max-w-[1285px] w-full h-2 left-1/2 -translate-x-1/2 absolute flex justify-between pointer-events-none">
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full -translate-x-1"></span>
+        <span className="flex w-3 h-3 border border-sub-border bg-white shadow rounded-full translate-x-1"></span>
+      </span>
 
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+      <Contact />
+    </main>
   );
-}
+};
+
+export default Home;

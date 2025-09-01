@@ -57,7 +57,7 @@ export const Process = () => {
       gsap.fromTo(
         contentRef.current,
         { opacity: 0, x: direction },
-        { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }
       );
       prevStepRef.current = activeStep;
     }

@@ -1,13 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "./shared/Button";
 import { MoveRight, ArrowRight, ArrowLeft } from "lucide-react";
-import { useState } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const projectItems = [
@@ -90,11 +89,9 @@ const projectItems = [
 export const Projects = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
-  const infoRef = useRef<HTMLDivElement | null>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const badgesRef = useRef<HTMLDivElement | null>(null);
-  const stacksRef = useRef<HTMLUListElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const currentProject = projectItems[activeIdx];
 
   useGSAP(() => {
@@ -124,35 +121,34 @@ export const Projects = () => {
   }, {});
 
   useGSAP(() => {
-    if (infoRef.current) {
+    if (cardRef.current) {
       gsap.fromTo(
-        infoRef.current,
-        { opacity: 0, scale: 0.95, x: -40 },
-        { opacity: 1, scale: 1, x: 0, duration: 0.5, ease: "power2.out" }
-      );
-    }
-    if (imageRef.current) {
-      gsap.fromTo(
-        imageRef.current,
-        { opacity: 0, x: 40 },
-        { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
-      );
-    }
-    if (badgesRef.current) {
-      gsap.fromTo(
-        badgesRef.current.children,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" }
-      );
-    }
-    if (stacksRef.current) {
-      gsap.fromTo(
-        stacksRef.current.children,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "power2.out" }
+        cardRef.current,
+        { opacity: 0, scale: 0.98 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }
       );
     }
   }, [activeIdx]);
+
+  const handleChangeProject = (nextIdx: number) => {
+    if (isAnimating || nextIdx === activeIdx) return;
+    setIsAnimating(true);
+    if (cardRef.current) {
+      gsap.to(cardRef.current, {
+        opacity: 0,
+        scale: 0.98,
+        duration: 0.35,
+        ease: "power2.in",
+        onComplete: () => {
+          setActiveIdx(nextIdx);
+          setTimeout(() => setIsAnimating(false), 400);
+        },
+      });
+    } else {
+      setActiveIdx(nextIdx);
+      setTimeout(() => setIsAnimating(false), 400);
+    }
+  };
 
   return (
     <section
@@ -173,8 +169,12 @@ export const Projects = () => {
           Take a look at some of our best work, we are truly proud!
         </p>
       </div>
-      <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-0 justify-between h-full xl:h-[480px] w-full bg-white rounded-4xl shadow-lg p-6 md:p-16">
-        <div className="space-y-2" ref={infoRef}>
+      <div
+        ref={cardRef}
+        className="flex flex-col-reverse md:flex-row gap-8 md:gap-0 justify-between h-full xl:h-[480px] w-full bg-white rounded-4xl shadow-lg p-6 md:p-16"
+        style={{ pointerEvents: isAnimating ? "none" : "auto" }}
+      >
+        <div className="space-y-2">
           <Image
             alt="Project Logo"
             priority
@@ -185,7 +185,7 @@ export const Projects = () => {
             className="object-contain h-10"
           />
           <p className="font-medium text-xl">{currentProject.comment}</p>
-          <div className="flex gap-2 flex-wrap py-4" ref={badgesRef}>
+          <div className="flex gap-2 flex-wrap py-4">
             {currentProject.badges.map((badge, i) => (
               <div
                 key={badge.title}
@@ -206,7 +206,7 @@ export const Projects = () => {
               </div>
             ))}
           </div>
-          <ul className="space-y-2 pb-4" ref={stacksRef}>
+          <ul className="space-y-2 pb-4">
             {currentProject.stacks.map((stack, i) => (
               <li
                 key={stack}
@@ -250,7 +250,6 @@ export const Projects = () => {
           height={262}
           src={currentProject.image}
           className="object-contain"
-          ref={imageRef}
         />
       </div>
       <div className="flex w-full justify-between ">
@@ -266,10 +265,11 @@ export const Projects = () => {
             light
             icon={<ArrowLeft />}
             onClick={() =>
-              setActiveIdx((idx: number) =>
-                idx === 0 ? projectItems.length - 1 : idx - 1
+              handleChangeProject(
+                activeIdx === 0 ? projectItems.length - 1 : activeIdx - 1
               )
             }
+            disabled={isAnimating}
           >
             Back
           </Button>
@@ -278,10 +278,11 @@ export const Projects = () => {
             iconPosition="right"
             icon={<ArrowRight />}
             onClick={() =>
-              setActiveIdx((idx: number) =>
-                idx === projectItems.length - 1 ? 0 : idx + 1
+              handleChangeProject(
+                activeIdx === projectItems.length - 1 ? 0 : activeIdx + 1
               )
             }
+            disabled={isAnimating}
           >
             Next
           </Button>

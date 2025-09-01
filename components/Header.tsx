@@ -93,7 +93,7 @@ export const Header = () => {
     >
       <Image
         alt="The UX People"
-        src={"/images/logo.svg"}
+        src={"/images/logo.png"}
         width={144}
         height={24}
         priority
