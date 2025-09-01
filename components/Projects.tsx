@@ -171,7 +171,7 @@ export const Projects = () => {
       </div>
       <div
         ref={cardRef}
-        className="flex flex-col-reverse md:flex-row gap-8 md:gap-0 justify-between h-full xl:h-[480px] w-full bg-white rounded-4xl shadow-lg p-6 md:p-16"
+        className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-0 items-center justify-between h-full xl:h-[480px] w-full bg-white rounded-4xl shadow-lg p-6 md:p-16"
         style={{ pointerEvents: isAnimating ? "none" : "auto" }}
       >
         <div className="space-y-2">
