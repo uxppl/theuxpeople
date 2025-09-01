@@ -7,6 +7,11 @@ import { Button } from "./shared/Button";
 import { AtSign, MessageCircle, UsersRound } from "lucide-react";
 import Link from "next/link";
 
+const whatsappUrl =
+  process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/905052720895";
+const callUrl =
+  process.env.NEXT_PUBLIC_CALL_URL || "https://form.typeform.com/to/GLrLzhQr";
+
 export const Contact = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
@@ -86,11 +91,7 @@ export const Contact = () => {
         ref={buttonsRef}
         className="flex flex-col items-center md:flex-row justify-center gap-8 pt-10"
       >
-        <a
-          href="https://wa.me/905052720895"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
           <Button icon={<MessageCircle fill="#ffffff" />}>Send WhatsApp</Button>
         </a>
         <Link href="/contact">
@@ -98,11 +99,7 @@ export const Contact = () => {
             Send Email
           </Button>
         </Link>
-        <a
-          href="https://form.typeform.com/to/GLrLzhQr"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={callUrl} target="_blank" rel="noopener noreferrer">
           <Button light icon={<UsersRound />}>
             Request a Call
           </Button>

@@ -2,6 +2,12 @@
 
 import Link from "next/link";
 
+const whatsappUrl =
+  process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/905052720895";
+const callUrl =
+  process.env.NEXT_PUBLIC_CALL_URL ||
+  "https://form.typeform.com/to/GLrLzhQ-call";
+
 const footerBlocks = [
   {
     icon: "/images/paint-brush-02.png",
@@ -85,7 +91,7 @@ export const Footer = () => {
           <ul className="space-y-1">
             <li>
               <a
-                href="https://wa.me/905052720895"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[15px] text-gray-700 hover:text-primary transition-colors"
@@ -110,7 +116,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://form.typeform.com/to/GLrLzhQ-call"
+                href={callUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[15px] text-gray-700 hover:text-primary transition-colors"

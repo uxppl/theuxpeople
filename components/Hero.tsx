@@ -7,6 +7,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
 
+const callUrl =
+  process.env.NEXT_PUBLIC_CALL_URL || "https://form.typeform.com/to/GLrLzhQr";
+
 export const Hero = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -93,9 +96,16 @@ export const Hero = () => {
       </div>
       <div className="space-x-6 flex w-full justify-center mt-16">
         <span ref={btnLeftRef}>
-          <Button light icon={<PhoneIcon />}>
-            Book a Call
-          </Button>
+          <a
+            href={callUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[15px] text-gray-700 hover:text-primary transition-colors"
+          >
+            <Button light icon={<PhoneIcon />}>
+              Book a Call
+            </Button>
+          </a>
         </span>
         <span ref={btnRightRef}>
           <Link href="/contact">
