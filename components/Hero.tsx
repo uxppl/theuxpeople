@@ -5,6 +5,7 @@ import { User, AtSign, PhoneIcon } from "lucide-react";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Link from "next/link";
 
 export const Hero = () => {
   const sectionRef = useRef(null);
@@ -97,7 +98,9 @@ export const Hero = () => {
           </Button>
         </span>
         <span ref={btnRightRef}>
-          <Button icon={<AtSign />}>Contact Us</Button>
+          <Link href="/contact">
+            <Button icon={<AtSign />}>Contact Us</Button>
+          </Link>
         </span>
       </div>
     </section>

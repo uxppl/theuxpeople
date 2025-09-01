@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { Button } from "./shared/Button";
 import { MoveRight } from "lucide-react";
+import { usePathname } from "next/navigation";
 gsap.registerPlugin(ScrollTrigger);
 
 const serviceBlocks = [
@@ -46,19 +48,20 @@ export const Services = () => {
   const iconRefs = useRef<any[]>([]);
   const contentRefs = useRef<any[]>([]);
   const buttonRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
     gsap.from(titleRef.current, {
       opacity: 0,
       y: -40,
-      duration: 0.7,
+      duration: 0.5,
       ease: "power2.out",
       delay: 1,
     });
     gsap.from(descRef.current, {
       opacity: 0,
       y: 40,
-      duration: 0.7,
+      duration: 0.5,
       ease: "power2.out",
       delay: 1.2,
     });
@@ -113,7 +116,7 @@ export const Services = () => {
         },
         "+=0.1"
       );
-  }, []);
+  }, [pathname]);
 
   return (
     <section

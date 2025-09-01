@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { useState, useEffect } from "react";
 import { Button } from "./shared/Button";
 import { AtSign, Menu } from "lucide-react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -116,7 +117,9 @@ export const Header = () => {
         ))}
       </nav>
       <div className="hidden md:flex">
-        <Button icon={<AtSign />}>Contact Us</Button>
+        <Link href="/contact">
+          <Button icon={<AtSign />}>Contact Us</Button>
+        </Link>
       </div>
       <button
         className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-gray-200"

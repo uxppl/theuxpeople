@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const footerBlocks = [
   {
     icon: "/images/paint-brush-02.png",
@@ -102,7 +104,9 @@ export const Footer = () => {
               </a>
             </li>
             <li>
-              <span className="text-[15px] text-gray-700">Send an Email</span>
+              <Link href="/contact">
+                <span className="text-[15px] text-gray-700">Send an Email</span>
+              </Link>
             </li>
             <li>
               <a

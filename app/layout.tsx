@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { Toaster } from "sonner";
 
 const interSans = Inter({
@@ -28,7 +27,7 @@ export default function RootLayout({
         <Toaster richColors position="top-right" />
         <div className="font-sans pt-12 pb-6 relative overflow-hidden">
           <div className="border-l border-r pointer-events-none border-sub-border max-w-[1280px] w-full h-full top-0 left-1/2 -translate-x-1/2  absolute"></div>
-          <Header />
+
           {children}
           <Footer />
         </div>

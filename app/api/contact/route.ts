@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         <div style="font-family: Arial, sans-serif; background: #f7f7f7; padding: 32px;">
           <div style="max-width: 480px; margin: auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 8px #0001; padding: 32px;">
             <div style="text-align: center; margin-bottom: 24px;">
-              <img src="${logoUrl}" alt="Logo" style="height: 40px; margin-bottom: 16px;" />
+              <img src="${logoUrl}" alt="Logo" style="height: 24px; margin-bottom: 16px;" />
               <h2 style="color: #25B5AE; margin: 0;">New Contact Request</h2>
             </div>
             <table style="width: 100%; font-size: 16px; margin-bottom: 24px;">

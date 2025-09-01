@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Button } from "./shared/Button";
 import { AtSign, MessageCircle, UsersRound } from "lucide-react";
+import Link from "next/link";
 
 export const Contact = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -92,9 +93,11 @@ export const Contact = () => {
         >
           <Button icon={<MessageCircle fill="#ffffff" />}>Send WhatsApp</Button>
         </a>
-        <Button light icon={<AtSign />}>
-          Send Email
-        </Button>
+        <Link href="/contact">
+          <Button light icon={<AtSign />}>
+            Send Email
+          </Button>
+        </Link>
         <a
           href="https://form.typeform.com/to/GLrLzhQr"
           target="_blank"
