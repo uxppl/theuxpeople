@@ -43,7 +43,7 @@ export default function RootLayout({
       <body className={`${interSans.variable} antialiased`}>
         <Toaster richColors position="top-right" />
         <div className="font-sans pt-12 pb-6 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-36 blur-[90px] bg-gradient-to-t from-[#06aba4] to-[#0F7768] opacity-15"></div>
+          <div className="absolute top-0 left-0 w-full pointer-events-none h-36 blur-[90px] bg-gradient-to-t from-[#06aba4] to-[#0F7768] opacity-15"></div>
           <div className="border-l border-r pointer-events-none border-sub-border max-w-[1280px] w-full h-full top-0 left-1/2 -translate-x-1/2  absolute"></div>
 
           {children}
