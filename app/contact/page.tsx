@@ -65,9 +65,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="max-w-[1180px] h-full mx-auto px-6 mt-2 pb-20 space-y-20">
+    <div className="max-w-[1180px] h-full mx-auto px-6 mt-2 pb-20 space-y-20 relative">
       <div
-        className={`flex items-center justify-between  mx-auto px-6 bg-white border border-[#f7f7f7] h-12 max-w-[807px] w-full rounded-full transition-all duration-400 z-50`}
+        className={`flex items-center justify-between  mx-auto px-6 z-50 bg-white border border-[#f7f7f7] h-12 max-w-[807px] w-full rounded-full transition-all duration-400`}
         style={{
           boxShadow: `0px 1px 3px -1.5px #33333316,
                    0px 5px 5px -2.5px #33333308,
