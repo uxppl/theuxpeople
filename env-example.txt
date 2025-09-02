@@ -1,0 +1,8 @@
+SMTP_HOST=smtp.yourprovider.com
+SMTP_PORT=587
+SMTP_USER=your@email.com
+SMTP_PASS=yourpassword
+CONTACT_RECEIVER=destination@email.com
+NEXT_PUBLIC_SITE_URL=https://the-ux-people.vercel.app
+NEXT_PUBLIC_WHATSAPP_URL=https://wa.me/905052720895
+NEXT_PUBLIC_CALL_URL=https://form.typeform.com/to/GLrLzhQr
