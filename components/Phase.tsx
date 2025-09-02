@@ -11,7 +11,7 @@ const phaseBlocks = [
     image: "/images/ui-phase-1.png",
     desc: (
       <>
-        <span className="text-gray-700 text-base">
+        <span>
           When building a digital product, it’s tempting to jump straight into
           development. But without clear UI design first, developers risk
           building the wrong thing, which costs more time and money to fix
@@ -24,7 +24,7 @@ const phaseBlocks = [
     image: "/images/ui-phase-2.png",
     desc: (
       <>
-        <span className="text-gray-700 text-base">
+        <span>
           UI design is like the blueprint of a house. Before construction
           begins, you need to see the layout, flow, and look of the rooms. In
           the same way, UI shows exactly how a product will work and feel for
@@ -62,7 +62,7 @@ const phaseBlocks = [
                   />
                 </svg>
               </span>
-              <span className="font-normal text-nowrap">{item}</span>
+              <span className="font-normal text-lg text-nowrap">{item}</span>
             </li>
           ))}
         </ul>
@@ -74,7 +74,6 @@ const phaseBlocks = [
 export const Phases = () => {
   const boxRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
   const imgRefs = useRef<any[]>([]);
   const descRefs = useRef<any[]>([]);
 
@@ -152,7 +151,7 @@ export const Phases = () => {
               ref={(el) => {
                 descRefs.current[idx] = el;
               }}
-              className="text-lg max-w-2xs text-sub-color font-normal space-y-4 tracking-tight leading-6"
+              className="text-lg max-w-sm text-sub-color font-normal space-y-4 tracking-tight leading-6"
             >
               {block.desc}
             </div>
