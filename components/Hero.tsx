@@ -61,12 +61,16 @@ export const Hero = () => {
       className="pb-20 pt-28 md:pt-44 space-y-5 max-w-[1180px] mx-auto px-6"
       id="home"
     >
-      <div
+
+<div
         ref={topBarRef}
         className="flex items-center gap-4 w-fit mx-auto border border-sub-border md:py-0.5 md:pl-0.5 md:pr-4 rounded-full"
       >
-        <Button icon={<User />}>user-first</Button>
-        <span className="text-base md:text-[18px] font-normal text-sub-color">
+<div className="flex items-center gap-2 px-4 py-1 h-10 bg-gray-200 rounded-full bg-gray-100 text-gray-900 text-sm font-medium">
+          <User className="w-5 h-5" />
+          user-first
+        </div>
+        <span className="text-base md:text-[16px] font-normal text-sub-color">
           Give your customers the experience they deserve
         </span>
       </div>
