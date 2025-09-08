@@ -4,8 +4,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/shared/Button";
 import { ArrowRight } from "lucide-react";
 import { User, Mail, Phone } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Header } from "@/components/Header";
 
 const initialState = {
   fullName: "",
@@ -66,27 +65,8 @@ const Contact = () => {
 
   return (
     <div className="max-w-[1180px] h-full mx-auto px-6 mt-2 pb-20 space-y-20 relative">
-      <div
-        className={`flex items-center justify-between  mx-auto px-6 z-50 bg-white border border-[#f7f7f7] h-12 max-w-[807px] w-full rounded-full transition-all duration-400`}
-        style={{
-          boxShadow: `0px 1px 3px -1.5px #33333316,
-                   0px 5px 5px -2.5px #33333308,
-                   0px 12px 6px -6px #33333302,
-                   0px 16px 8px -8px #33333301,
-                   0px 0px 0px 1px #33333304,
-                   0px -0.5px 0.5px 0px #33333308`,
-        }}
-      >
-        <Link href="/">
-          <Image
-            alt="The UX People"
-            src={"/images/logo.png"}
-            width={144}
-            height={24}
-            priority
-            quality={100}
-          />
-        </Link>
+      <div className="flex items-center justify-between mx-auto px-6 z-50 h-12">
+        <Header />
       </div>
       <div className="space-y-4 mt-10">
         <h3 className="font-medium text-5xl text-center">
@@ -223,7 +203,7 @@ const Contact = () => {
             ))}
           </div>
         </div>
-        <div className="flex justify-between items-center  pt-2">
+        <div className="flex flex-col lg:flex-row justify-between items-start md:items-center gap-2 pt-2">
           <Button
             iconPosition="right"
             icon={

@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { Button } from "./shared/Button";
 import { AtSign, Menu } from "lucide-react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -16,6 +17,8 @@ export const Header = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const [isPinned, setIsPinned] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const sections = [
     { id: "home", label: "Home" },
@@ -25,34 +28,56 @@ export const Header = () => {
   ];
 
   const handleScroll = (id: string) => {
-    setActiveSection(id);
-    const el = document.getElementById(id);
-    if (el) {
-      const headerHeight = headerRef.current?.offsetHeight || 0;
-      const y =
-        el.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: y,
-        ease: "power2.inOut",
-      });
-      setMobileMenuOpen(false);
+    if (pathname !== "/") {
+      router.push("/");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const headerHeight = headerRef.current?.offsetHeight || 0;
+          const y =
+            el.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+          gsap.to(window, {
+            duration: 1,
+            scrollTo: y,
+            ease: "power2.inOut",
+          });
+          setActiveSection(id);
+        }
+      }, 100);
+    } else {
+      setActiveSection(id);
+      const el = document.getElementById(id);
+      if (el) {
+        const headerHeight = headerRef.current?.offsetHeight || 0;
+        const y =
+          el.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        gsap.to(window, {
+          duration: 1,
+          scrollTo: y,
+          ease: "power2.inOut",
+        });
+      }
     }
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
     const handleScrollEvent = () => {
-      let current = "home";
-      for (const section of sections) {
-        const el = document.getElementById(section.id);
-        if (el) {
-          const top = el.getBoundingClientRect().top;
-          if (top < 120) {
-            current = section.id;
+      if (pathname === "/") {
+        let current = "home";
+        for (const section of sections) {
+          const el = document.getElementById(section.id);
+          if (el) {
+            const top = el.getBoundingClientRect().top;
+            if (top < 120) {
+              current = section.id;
+            }
           }
         }
+        setActiveSection(current);
+      } else {
+        setActiveSection("");
       }
-      setActiveSection(current);
 
       if (window.scrollY > 60 && !isPinned) {
         setIsPinned(true);
@@ -76,7 +101,7 @@ export const Header = () => {
     };
     window.addEventListener("scroll", handleScrollEvent);
     return () => window.removeEventListener("scroll", handleScrollEvent);
-  }, [isPinned]);
+  }, [isPinned, pathname]);
 
   return (
     <header
@@ -92,14 +117,16 @@ export const Header = () => {
                    0px -0.5px 0.5px 0px #33333308`,
       }}
     >
-      <Image
-        alt="The UX People"
-        src={"/images/logo.png"}
-        width={144}
-        height={24}
-        priority
-        quality={100}
-      />
+      <Link href={"/"}>
+        <Image
+          alt="The UX People"
+          src={"/images/logo.png"}
+          width={144}
+          height={24}
+          priority
+          quality={100}
+        />
+      </Link>
       <nav className="hidden md:flex gap-7 font-medium text-sm">
         {sections.map((section) => (
           <button
@@ -153,7 +180,9 @@ export const Header = () => {
           </button>
         ))}
         <div className="w-fit self-center mt-4">
-          <Button icon={<AtSign />}>Contact Us</Button>
+          <Link href="/contact">
+            <Button icon={<AtSign />}>Contact Us</Button>
+          </Link>
         </div>
       </div>
     </header>

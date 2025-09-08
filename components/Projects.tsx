@@ -58,7 +58,7 @@ export const Projects = () => {
   }, []);
 
   useGSAP(() => {
-    if (cardRef.current) {
+    if (cardRef.current && activeIdx !== 0) {
       gsap.fromTo(
         cardRef.current,
         { opacity: 0, scale: 0.98 },

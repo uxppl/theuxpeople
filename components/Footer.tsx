@@ -3,6 +3,7 @@
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { useRouter, usePathname } from "next/navigation";
 gsap.registerPlugin(ScrollToPlugin);
 
 const whatsappUrl =
@@ -45,14 +46,29 @@ const footerBlocks = [
 const ACTIVE_SERVICE_KEY = "activeService";
 
 export const Footer = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const handleServiceClick = (service: string) => {
     localStorage.setItem(ACTIVE_SERVICE_KEY, service);
     window.dispatchEvent(new Event("activeServiceChange"));
-    gsap.to(window, {
-      duration: 0.8,
-      scrollTo: { y: "#services", offsetY: 0 },
-      ease: "power2.out",
-    });
+    
+    if (pathname !== "/") {
+      router.push("/");
+      setTimeout(() => {
+        gsap.to(window, {
+          duration: 0.8,
+          scrollTo: { y: "#services", offsetY: 0 },
+          ease: "power2.out",
+        });
+      }, 100);
+    } else {
+      gsap.to(window, {
+        duration: 0.8,
+        scrollTo: { y: "#services", offsetY: 0 },
+        ease: "power2.out",
+      });
+    }
   };
 
   return (
